@@ -1,11 +1,12 @@
 import FeaturedPosts from '../components/home-page/featured-posts';
 import Hero from '../components/home-page/hero';
+import { getFeaturedPosts } from '../helpers/posts-util';
 
 const DUMMY_POSTS = [
     {
         slug: 'i-terminate-humans',
         title: 'I terminate humans',
-        image: 't-1.jpg',
+        image: 'i-terminate-humans.jpg',
         excerpt: 'Hasta la vista, baby',
         date: '2021-08-23'
     },
@@ -25,11 +26,19 @@ const DUMMY_POSTS = [
     }
 ];
 
-export default function HomePage() {
+export default function HomePage({ posts }) {
     return (
         <>
             <Hero />
-            <FeaturedPosts posts={DUMMY_POSTS} />
+            <FeaturedPosts posts={posts} />
         </>
     );
+}
+
+export function getStaticProps() {
+    const featuredPosts = getFeaturedPosts();
+
+    return {
+        props: { posts: featuredPosts }
+    }
 }
