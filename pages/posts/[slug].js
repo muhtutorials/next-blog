@@ -1,8 +1,17 @@
 import PostContent from '../../components/posts/post-detail/post-content';
 import { getPostData, getPostsFiles } from '../../helpers/posts-util';
+import Head from "next/head";
 
 export default function PostDetailPage({ post }) {
-    return <PostContent post={post} />
+    return (
+        <>
+            <Head>
+                <title>{post.title}</title>
+                <meta name="description" content={post.excerpt} />
+            </Head>
+            <PostContent post={post} />
+        </>
+    );
 }
 
 export function getStaticProps(context) {
