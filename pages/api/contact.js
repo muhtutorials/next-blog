@@ -20,10 +20,10 @@ export default async function handler(req, res) {
 
     let client;
 
+    const connectionString = `mongodb+srv://${process.env.dbUsername}:${process.env.dbPassword}@${process.env.dbCluster}.vtkas.mongodb.net/${process.env.dbName}?retryWrites=true&w=majority`;
+
     try {
-    	client = await MongoClient.connect(
-    		'mongodb+srv://igor:spellbound@cluster0.vtkas.mongodb.net/blog?retryWrites=true&w=majority'
-    	);
+    	client = await MongoClient.connect(connectionString);
     } catch (error) {
 		res.status(500).json({ message: 'Could not connect to database.' });
 		return;

@@ -1,9 +1,18 @@
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+// light build should be imported to reduce js file size for production
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import atomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+
 import PostHeader from './post-header';
 import classes from './post-content.module.css';
+
+SyntaxHighlighter.registerLanguage('js', js);
+SyntaxHighlighter.registerLanguage('jsx', jsx);
+SyntaxHighlighter.registerLanguage('css', css);
 
 export default function PostContent({ post }) {
     const imagePath = `/images/posts/${post.slug}/${post.image}`;

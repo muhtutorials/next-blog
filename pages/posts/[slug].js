@@ -1,6 +1,6 @@
 import PostContent from '../../components/posts/post-detail/post-content';
 import { getPostData, getPostsFiles } from '../../helpers/posts-util';
-import Head from "next/head";
+import Head from 'next/head';
 
 export default function PostDetailPage({ post }) {
     return (

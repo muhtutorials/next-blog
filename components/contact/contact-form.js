@@ -60,7 +60,7 @@ export default function ContactForm() {
     notification = {
       status: 'pending',
       title: 'Sending message...',
-      message: 'Your message is in its way'
+      message: 'Your message is on its way'
     }
   }
 
